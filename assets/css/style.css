@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box
+}
+body {
+margin: 20px auto;
+/* background-image: url("../images/SingleTrainNight-amariei-mihai-1408784-unsplash.jpg"); */
+/* background-image: fixed; */
+
+}
+
+.jumbotron {
+text-align: center;
+margin: 0 auto;
+
+}
+
+table,
+form {
+    border: 2px solid darkgray;
+    width: 90%;
+    margin: 0 auto;
+    
+}
+
+#tableHeader, 
+#formHeader {
+    padding: 10px;
+    background-color: darkgray;
+}

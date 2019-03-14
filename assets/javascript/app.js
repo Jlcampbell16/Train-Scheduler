@@ -17,7 +17,7 @@ var config = {
   var frequency = "";
   var minAway = 0;
 
-
+//-------------------------------------------------------------------------------
   //on click of submit button
   $("#submitBtn").on("click", function (event){
     //prevent refresh of page
@@ -28,6 +28,7 @@ var config = {
     destination = $("#destinationInput").val().trim();
     time = $("#timeInput").val().trim();
     frequency = $("#frequencyInput").val().trim();
+    
     //clear the input fields
     $(".form-control").val("");
 
@@ -41,14 +42,26 @@ var config = {
     });
   });
 
-//   database.ref().on("child_added", function(snapshot){
-//     $("#nameDisplay").text("<td>" + snapshot.val().name + "</td>");
-//     $("#destinationDisplay").text("<td>" + snapshot.val().destination + "</td>");
-//     $("#frequencyDisplay").text("<td>" + snapshot.val().frequency + "</td>");
-//     $("#arrivalDisplay").text("<td>" + snapshot.val().time + "</td>");
-//     $("#minAwayDisplay").text("<td>" + snapshot.val().minAway + "</td>");
-//   })
+//-------------------------------------------------------------------------------
+// add a new train on the next line -- NOT WORKING
+  database.ref().on("child_added", function(snapshot){
   
+    var newRow = $("<tr>").append(
+     $("<td>").text(snapshot.val().name), 
+     $("<td>").text(snapshot.val().destination), 
+     $("<td>").text(snapshot.val().time), 
+     $("<td>").text(snapshot.val().frequency), 
+     $("<td>").text(snapshot.val().minAway) 
+     
+    )
+    $("#trainTable > tbody").append(newRow);
+    // $("#nameDisplay").append("<td>" +  + "</td>");
+    // $("#destinationDisplay").append("<td>" + snapshot.val().destination + "</td>");
+    // $("#frequencyDisplay").html("<td>" + snapshot.val().frequency + "</td>");
+    // $("#arrivalDisplay").html("<td>" + snapshot.val().time + "</td>");
+    // $("#minAwayDisplay").html("<td>" + snapshot.val().minAway + "</td>");
+  });
+//------------------------------------------------------------------------------- 
   //snapshot & error
   database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
     console.log(snapshot.val().name);

@@ -25,7 +25,6 @@
 
     <!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-
 </head>
 
 <body>
@@ -48,11 +47,11 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Thomas</td>
-                    <td>Denver, CO</td>
-                    <td>30</td>
-                    <td>5:30 PM</td>
-                    <td>3</td>
+                    <td id="nameDisplay"></td>
+                    <td id="destinationDisplay"></td>
+                    <td id="frequencyDisplay"></td>
+                    <td id="arrivalDisplay"></td>
+                    <td id="minAwayDisplay"></td>
                 </tr>
             </tbody>
         </table>
@@ -65,22 +64,22 @@
             </header>
             <div class="form-group">
                 <label for="formGroupExampleInput"><strong>Train Name</strong></label>
-                <input type="text" class="form-control" id="formGroupExampleInput"
-                    placeholder="i.e. Thomas the Tank Engine">
+                <input type="text" class="form-control" id="nameInput" placeholder="i.e. Thomas the Tank Engine">
             </div>
             <br>
             <div class="form-group">
                 <label for="formGroupExampleInput2"><strong>Destination</strong></label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="City, State">
+                <input type="text" class="form-control" id="destinationInput" placeholder="City, State">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput"><strong>First Train Time (HH:mm - Military Time)</strong></label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="i.e. 16:30">
+                <input type="text" class="form-control" id="timeInput" placeholder="i.e. 16:30">
             </div>
             <div class="form-group">
             <label for="formGroupExampleInput2"><strong>Frequency (min)</strong></label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="i.e. 75">
+                <input type="text" class="form-control" id="frequencyInput" placeholder="i.e. 75">
             </div>
+            <button type="button" class="btn btn-secondary" id="submitBtn">Submit</button>
         </form>
     </div>
 

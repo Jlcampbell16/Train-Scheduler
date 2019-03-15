@@ -1,29 +1,52 @@
 * {
     box-sizing: border-box
 }
+
 body {
-margin: 20px auto;
-/* background-image: url("../images/SingleTrainNight-amariei-mihai-1408784-unsplash.jpg"); */
-/* background-image: fixed; */
+background-size: cover;
+background-image: url("../images/SingleTrainNight-amariei-mihai-1408784-unsplash.jpg");
+
 
 }
+
 
 .jumbotron {
 text-align: center;
-margin: 0 auto;
-
 }
 
-table,
+/* HEADER IS NOT ATTACHED TO THE TABLE - ROUNDED CORNERS & LENGTH */
+table {
+    background-color: white;
+    opacity: 50;
+    /* border-radius: 25px ; */    
+}
+
+/*  */
 form {
-    border: 2px solid darkgray;
-    width: 90%;
-    margin: 0 auto;
-    
+    background-color: white;
+    /* border-radius: 25px ; */
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 #tableHeader, 
 #formHeader {
     padding: 10px;
     background-color: darkgray;
+    text-align: center;
+    font-variant: small-caps;
+    font-size: 18px;
+
 }
+
+.form-group {
+   padding: 0px 25px;
+}
+
+/* CENTER BUTTON */
+#submitBtn {
+    
+
+}
+
+

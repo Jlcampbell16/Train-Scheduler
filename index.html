@@ -9,6 +9,7 @@
 
     <!-- CSS Link -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
 
     <!-- Bootstrap CDN Links -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -25,64 +26,84 @@
 
     <!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+
+    <!-- Added Moment JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 </head>
 
 <body>
-    <div class="jumbotron">
-        <h1>Welcome to the Train Station!</h1>
-    </div>
-    <div class="trainTable">
-        <table class="table table-striped" id="trainTable">
-            <thead>
-                <header id="tableHeader">
-                    <strong>Current Train Schedule</strong>
-                </header>
-                <tr>
-                    <th scope="col">Train Name</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Frequency (min)</th>
-                    <th scope="col">Next Arrival</th>
-                    <th scope="col">Minutes Away</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td id="nameDisplay"></td>
-                    <td id="destinationDisplay"></td>
-                    <td id="frequencyDisplay"></td>
-                    <td id="arrivalDisplay"></td>
-                    <td id="minAwayDisplay"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <div class="container">
 
-    <div class="trainForm">
-        <form>
-            <header id="formHeader">
-                <strong>Add a Train to the Schedule</strong>
-            </header>
-            <div class="form-group">
-                <label for="formGroupExampleInput"><strong>Train Name</strong></label>
-                <input type="text" class="form-control" id="nameInput" placeholder="i.e. Thomas the Tank Engine">
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="formGroupExampleInput2"><strong>Destination</strong></label>
-                <input type="text" class="form-control" id="destinationInput" placeholder="City, State">
-            </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput"><strong>First Train Time (HH:mm - Military Time)</strong></label>
-                <input type="text" class="form-control" id="timeInput" placeholder="i.e. 16:30">
-            </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput2"><strong>Frequency (min)</strong></label>
-                <input type="text" class="form-control" id="frequencyInput" placeholder="i.e. 75">
-            </div>
-            <button type="button" class="btn btn-secondary" id="submitBtn">Submit</button>
-        </form>
-    </div>
+        <div class="jumbotron">
+            <h1>Welcome to the Train Station!</h1>
+        </div>
 
+        <div class="row">
+            <div class="col-md-8">
+                   
+                <table class="table table-striped" id="trainTable">
+                        <header id="tableHeader">
+                                <strong>Train Schedule</strong>
+                            </header>
+                    <thead>
+                        <!-- <tr>
+                            <th id="tableHeader">Current Train Schedule</th>
+                        </tr> -->
+                        <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="nameDisplay"></td>
+                            <td id="destinationDisplay"></td>
+                            <td id="frequencyDisplay"></td>
+                            <td id="arrivalDisplay"></td>
+                            <td id="minAwayDisplay"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        <!-- </div> -->
+
+
+        <!-- <div class="row"> -->
+            <div class="col-md-4">
+                <div class="trainForm">
+                    <form>
+                        <header id="formHeader">
+                            <strong>Add a Train to the Schedule</strong>
+                        </header>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput"><strong>Train Name</strong></label>
+                            <input type="text" class="form-control" id="nameInput"
+                                placeholder="i.e. Thomas the Tank Engine">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2"><strong>Destination</strong></label>
+                            <input type="text" class="form-control" id="destinationInput" placeholder="City, State">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput"><strong>First Train Time (Military HH:MM)</strong></label>
+                            <input type="text" class="form-control" id="timeInput" placeholder="i.e. 16:30">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2"><strong>Frequency (min)</strong></label>
+                            <input type="text" class="form-control" id="frequencyInput" placeholder="i.e. 75">
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="submitBtn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 
 
 

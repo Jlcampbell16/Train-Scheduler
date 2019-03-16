@@ -16,7 +16,6 @@ var destination = "";
 var time = "00:00";
 var frequency = 0;
 
-
 //-------------------------------------------------------------------------------
 // on click of submit button
 $("#submitBtn").on("click", function (event) {
@@ -46,58 +45,28 @@ $("#submitBtn").on("click", function (event) {
 // add a new train on the next line 
 // anytime a new train is added add it to the snapshot
 database.ref().on("child_added", function (snapshot) {
-  console.log(snapshot.val());
-
   var tTime = snapshot.val().time;
   var tFreq = snapshot.val().frequency;
+  var tName = snapshot.val().name
+  var tDest = snapshot.val().destination
 
-  console.log(tTime)
   // calculations
   var timeConverted = moment(tTime, "HH:mm").subtract(1, "years");
-    console.log("time converted: " + timeConverted);
-
-  // var currentTime = moment();
-  //   console.log("current time: " + moment(currentTime).format("hh:mm A"));
   var timeDifference = moment().diff(moment(timeConverted), "minutes");
-    console.log("time difference: " + timeDifference);
-    console.log(typeof timeDifference)
+  var timeRemainder = timeDifference % tFreq;
+  var minAway = tFreq - timeRemainder;
+  var nextArrival = moment().add(minAway, "minutes");
 
-  var timeRemainder = timeDifference % tFreq; //NOT WORKING
-    console.log("time remainder: ", timeRemainder);
-    console.log(typeof timeRemainder);
-    console.log(frequency);
-
-  var minAway = tFreq - timeRemainder; // NOT WORKING
-    console.log("minutes away: " + minAway);
-
-  var nextArrival = moment().add(minAway, "minutes"); //NOT WORKING
-    console.log("next train arrival time: " + moment(nextArrival).format("hh:mm A"));
-
-  var trnName = snapshot.val().name
-  var trnDest = snapshot.val().destination
-
-
-
+  //add to the page
   var newRow = $("<tr>").append(
-    $("<td>").text(trnName),
-    $("<td>").text(trnDest),
+    $("<td>").text(tName),
+    $("<td>").text(tDest),
     $("<td>").text(tFreq),
     $("<td>").text(moment(nextArrival).format("hh:mm A")),
     $("<td>").text(minAway)
-
   )
   $("#trainTable > tbody").append(newRow);
 
 }, function (errorObject) {
     console.log("Error Code: " + errorObject);
-  }); 
-
-
-
-
-
-// }
-
-//------------------------------------------------------------------------------- 
-
-
+}); 

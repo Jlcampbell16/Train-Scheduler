@@ -46,21 +46,28 @@ $("#submitBtn").on("click", function (event) {
 // add a new train on the next line 
 // anytime a new train is added add it to the snapshot
 database.ref().on("child_added", function (snapshot) {
+  console.log(snapshot.val());
 
+  var tTime = snapshot.val().time;
+  var tFreq = snapshot.val().frequency;
+
+  console.log(tTime)
   // calculations
-  var timeConverted = moment(time, "HH:mm").subtract(1, "years");
+  var timeConverted = moment(tTime, "HH:mm").subtract(1, "years");
     console.log("time converted: " + timeConverted);
 
   // var currentTime = moment();
   //   console.log("current time: " + moment(currentTime).format("hh:mm A"));
-
   var timeDifference = moment().diff(moment(timeConverted), "minutes");
     console.log("time difference: " + timeDifference);
+    console.log(typeof timeDifference)
 
-  var timeRemainder = timeDifference % frequency; //NOT WORKING
-    console.log("time remainder: " + timeRemainder);
+  var timeRemainder = timeDifference % tFreq; //NOT WORKING
+    console.log("time remainder: ", timeRemainder);
+    console.log(typeof timeRemainder);
+    console.log(frequency);
 
-  var minAway = frequency - timeRemainder; // NOT WORKING
+  var minAway = tFreq - timeRemainder; // NOT WORKING
     console.log("minutes away: " + minAway);
 
   var nextArrival = moment().add(minAway, "minutes"); //NOT WORKING
@@ -68,35 +75,28 @@ database.ref().on("child_added", function (snapshot) {
 
   var trnName = snapshot.val().name
   var trnDest = snapshot.val().destination
-  // var trnTime = snapshot.val().time
-  var trnFreq = snapshot.val().frequency
+
 
 
   var newRow = $("<tr>").append(
     $("<td>").text(trnName),
     $("<td>").text(trnDest),
-    $("<td>").text(trnFreq),
+    $("<td>").text(tFreq),
     $("<td>").text(moment(nextArrival).format("hh:mm A")),
     $("<td>").text(minAway)
 
   )
   $("#trainTable > tbody").append(newRow);
 
-}); //DOES THE ERROR GO HERE? 
-
-//------------------------------------------------------------------------------- 
-// snapshot & error  -- DO I STILL NEED THIS SECTION? 
-database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
-  // console.log(snapshot.val().name);
-  // console.log(snapshot.val().destination);
-  // console.log(snapshot.val().time);
-  // console.log(snapshot.val().frequency);
-
-
-
 }, function (errorObject) {
-  console.log("Error Code: " + errorObject);
-});
+    console.log("Error Code: " + errorObject);
+  }); 
+
+
+
+
+
+// }
 
 //------------------------------------------------------------------------------- 
 

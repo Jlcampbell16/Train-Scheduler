@@ -9,7 +9,6 @@ background-image: url("../images/SingleTrainNight-amariei-mihai-1408784-unsplash
 
 }
 
-
 .jumbotron {
 text-align: center;
 }
@@ -18,13 +17,13 @@ text-align: center;
 table {
     background-color: white;
     opacity: 50;
-    /* border-radius: 25px ; */    
+    border-radius: 0  0 25px 25px ;    
 }
 
 /*  */
 form {
     background-color: white;
-    /* border-radius: 25px ; */
+    border-radius: 25px ;
     margin-top: 5px;
     margin-bottom: 20px;
 }
@@ -44,9 +43,16 @@ form {
 }
 
 /* CENTER BUTTON */
-#submitBtn {
-    
+.btn {
+margin-bottom: 5px;
+/* margin-left: 40%; */
+/* margin: 0 auto; */
 
+}
+
+.trainForm {
+    display: flex;
+    justify-content: center;
 }
 
 

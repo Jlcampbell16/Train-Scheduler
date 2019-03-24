@@ -5,10 +5,13 @@
 body {
 background-size: cover;
 background-image: url("../images/SingleTrainNight-amariei-mihai-1408784-unsplash.jpg");
+font-family: Arial, Helvetica, sans-serif;
 }
 
-.jumbotron {
+header {
 text-align: center;
+font-family: 'Bungee Inline', cursive;
+padding: 30px;
 }
 
 table {
@@ -44,6 +47,11 @@ margin-bottom: 5px;
 .trainForm {
     display: flex;
     justify-content: center;
+}
+#tableheader, 
+table, 
+.trainForm {
+    opacity: 0.92;
 }
 
 
